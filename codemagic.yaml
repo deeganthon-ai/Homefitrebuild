@@ -1,0 +1,11 @@
+workflows:
+  android-apk:
+    name: Android APK
+    environment:
+      node: 20
+    scripts:
+      - npm install
+      - npx expo prebuild --platform android --clean
+      - cd android && ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/**/*.apk
